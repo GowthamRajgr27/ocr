@@ -58,9 +58,11 @@ def _repeat(x, num_repeats):
     return tf.reshape(x, [-1])
 
 
+import tensorflow as tf
+
 def _meshgrid(height, width):
-    x_linspace = tf.linspace(-1.0, 1.0, width)
-    y_linspace = tf.linspace(-1.0, 1.0, height)
+    x_linspace = tf.linspace(-1.0, 1.0, tf.abs(width))
+    y_linspace = tf.linspace(-1.0, 1.0, tf.abs(height))
     x_coordinates, y_coordinates = tf.meshgrid(x_linspace, y_linspace)
     x_coordinates = tf.reshape(x_coordinates, shape=(1, -1))
     y_coordinates = tf.reshape(y_coordinates, shape=(1, -1))
